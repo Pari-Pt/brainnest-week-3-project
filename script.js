@@ -38,14 +38,18 @@ function game() {
     } else if (playerScore < computerScore) {
         console.log("COMPUTER won the game!🏆");
     } else {
-        console.log("YOU won the game");
+        console.log("YOU won the game🏆");
     }
     //Rematch offer
     let rematch = prompt("Would you like a rematch? Yes/No");
     rematch = rematch.toLowerCase();
     rematch = rematch.trim();
-    if (rematchChoices.includes(rematch)) {
-        game();
+    if (rematchOptions.includes(rematch)) {
+        if (rematch === "yes") {
+            game();
+        } else {
+            alert("Thanks for playing!");
+        }
     } else {
         alert("Please input either Yes or No")
         rematch = prompt("Would you like a rematch? Yes/No");
