@@ -97,23 +97,25 @@ function game() {
     }
 
 
-    //Rematch offer
+ } //Game function end || rematch === null 
+
+//Rematch offer
+    function rematchOffer() {
     let rematch = prompt("Would you like a rematch? Yes/No");
     rematch = rematch.toLowerCase();
     rematch = rematch.trim();
-    if (rematchOptions.includes(rematch)) {
-        if (rematch === "yes") {
-            game();
-        } else {
-            alert("Thanks for playing!");
-        }
-    } else {
-        alert("Please input either Yes or No")
-        rematch = prompt("Would you like a rematch? Yes/No");
+    if (!rematchOptions.includes(rematch)) {
+        rematchOffer();
+        return;
+    } else if (rematch === "yes") {
+        game();
+        return;
+    } else if (rematch === "no") {
+        alert("Thanks for playing");
     }
-
- } //Game function end
+}
 
 // 1st function call to begin the game
 game();
+rematchOffer();
 
