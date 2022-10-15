@@ -6,36 +6,57 @@ let computerScore = 0;
 let playerScore = 0;
 let playerWin = "You win, Computer loses.";
 let computerWin = "Computer wins, you lose."
+let roundNumber = 0;
 
 // Round Function with conditional statements and corresponding score changes
 
 function playRound(computerSelection, playerSelection) {
 
     if (computerSelection === playerSelection) {
-            return (`It's a draw, next round! Player:${playerScore} Computer:${computerScore}`);
+        roundNumber++;
+            return (`|ROUND ${roundNumber}| It's a draw, next round!
+            Player:${playerScore} Computer:${computerScore}`);
     } else if (computerSelection === "rock") {
         if (playerSelection === "paper") {
             playerScore++;
-            return (`Paper beats Rock! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
+            roundNumber++;
+            return (`|ROUND: ${roundNumber}| ${playerWin}
+            Paper beats Rock!
+            Player:${playerScore} Computer:${computerScore}`);
         } else {
             computerScore++
-            return (`Rock beats Scissors! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
+            roundNumber++;
+            return (`|ROUND: ${roundNumber}| ${computerWin}
+            Rock beats Scissors!
+            Player:${playerScore} Computer:${computerScore}`);
         }
     } else if (computerSelection === "paper") {
         if (playerSelection === "rock") {
             computerScore++
-            return (`Paper beats Rock! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
+            roundNumber++;
+            return (`|ROUND: ${roundNumber}| ${computerWin} 
+            Paper beats Rock!
+            Player:${playerScore} Computer:${computerScore}`);
         } else {
             playerScore++;
-            return (`Scissors beats Paper! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
+            roundNumber++;
+            return (`|ROUND: ${roundNumber}| ${playerWin}
+            Scissors beats Paper!
+            Player:${playerScore} Computer:${computerScore}`);
         }
     } else if (computerSelection === "scissors") {
         if (playerSelection === "rock") {
             playerScore++;
-            return (`Rock beats Scissors! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
+            roundNumber++;
+            return (`|ROUND: ${roundNumber}| ${playerWin} 
+            Rock beats Scissors! 
+            Player:${playerScore} Computer:${computerScore}`);
         } else {
             computerScore++
-            return (`Scissors beats Paper! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
+            roundNumber++;
+            return (`|ROUND: ${roundNumber}| ${computerWin} 
+            Scissors beats Paper! 
+            Player:${playerScore} Computer:${computerScore}`);
         }
     }
 }
@@ -52,6 +73,7 @@ function game() {
         playerSelection = playerSelection.trim();
         if (!choices.includes(playerSelection) || playerSelection == null) {
             alert("Please only select from the choices: rock, paper or scissors.");
+            i--;
         } else {
             let computerSelection = choices[Math.floor(Math.random() * choices.length)]; 
             //Math.random will produce a number >= 0 but < 1
@@ -64,7 +86,7 @@ function game() {
     } //Loop end
 
     //Score analysis
-    console.log(`The final score is Player:${playerScore} Computer:${computerScore} `);
+    console.log(`|GAME OVER| Final score is Player:${playerScore} Computer:${computerScore} `);
 
     if (playerScore === computerScore) {
         console.log("It's a DRAW 🤝!");
