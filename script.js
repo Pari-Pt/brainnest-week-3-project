@@ -7,6 +7,38 @@ let playerScore = 0;
 let playerWin = "You win, Computer loses.";
 let computerWin = "Computer wins, you lose."
 
+// Round Function with conditional statements and corresponding score changes
+
+function playRound(computerSelection, playerSelection) {
+
+    if (computerSelection === playerSelection) {
+            return (`It's a draw, next round! Player:${playerScore} Computer:${computerScore}`);
+    } else if (computerSelection === "rock") {
+        if (playerSelection === "paper") {
+            playerScore++;
+            return (`Paper beats Rock! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
+        } else {
+            computerScore++
+            return (`Rock beats Scissors! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
+        }
+    } else if (computerSelection === "paper") {
+        if (playerSelection === "rock") {
+            computerScore++
+            return (`Paper beats Rock! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
+        } else {
+            playerScore++;
+            return (`Scissors beats Paper! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
+        }
+    } else if (computerSelection === "scissors") {
+        if (playerSelection === "rock") {
+            playerScore++;
+            return (`Rock beats Scissors! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
+        } else {
+            computerScore++
+            return (`Scissors beats Paper! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
+        }
+    }
+}
 
 // Game Function, involving a loop for repetition (for 5 rounds)
 
@@ -33,6 +65,7 @@ function game() {
 
     //Score analysis
     console.log(`The final score is Player:${playerScore} Computer:${computerScore} `);
+
     if (playerScore === computerScore) {
         console.log("It's a DRAW 🤝!");
     } else if (playerScore < computerScore) {
@@ -40,6 +73,8 @@ function game() {
     } else {
         console.log("YOU won the game🏆");
     }
+
+
     //Rematch offer
     let rematch = prompt("Would you like a rematch? Yes/No");
     rematch = rematch.toLowerCase();
@@ -56,40 +91,6 @@ function game() {
     }
 
  } //Game function end
-
-
-// Round Function with conditional statements and corresponding score changes
-
-function playRound(computerSelection, playerSelection) {
-
-    if (computerSelection === playerSelection) {
-            return (`It's a draw, next round! Player:${playerScore} Computer:${computerScore}`);
-    } else if (computerSelection == "rock") {
-        if (playerSelection == "paper") {
-            playerScore++;
-            return (`Paper beats Rock! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
-        } else {
-            computerScore++
-            return (`Rock beats Scissors! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
-        }
-    } else if (computerSelection == "paper") {
-        if (playerSelection == "rock") {
-            computerScore++
-            return (`Paper beats Rock! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
-        } else {
-            playerScore++;
-            return (`Scissors beats Paper! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
-        }
-    } else if (computerSelection == "scissors") {
-        if (playerSelection == "rock") {
-            playerScore++;
-            return (`Rock beats Scissors! ${playerWin} Player:${playerScore} Computer:${computerScore}`);
-        } else {
-            computerScore++
-            return (`Scissors beats Paper! ${computerWin} Player:${playerScore} Computer:${computerScore}`);
-        }
-    }
-}
 
 // 1st function call to begin the game
 game();
